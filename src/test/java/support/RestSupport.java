@@ -27,9 +27,9 @@ public class RestSupport {
         RestSupport.response = response;
     }
 
-    public static void clearRs(){ requestSpecification = null; }
+    public static void clearRequestSpecification(){ requestSpecification = null; }
     private static RequestSpecification buildBaseRequestSpecification() {
-        clearRs();
+        clearRequestSpecification();
         if (!(requestSpecificationAux == null)) {
             requestSpecification.headers(((RequestSpecificationImpl) requestSpecificationAux).getHeaders());
             requestSpecification.cookies(((RequestSpecificationImpl) requestSpecificationAux).getCookies());
@@ -52,6 +52,25 @@ public class RestSupport {
             requestSpecificationAux.cookies(c);
         }
     }
+    public static void executeGet(String endpoint, Integer statusCode) {
+        response = buildBaseRequestSpecification()
+                .get(endpoint)
+                .then()
+                .statusCode(statusCode)
+                .extract().response();
+        printLogStart("GET",endpoint, "");
+        printLog("GET",response);
+        setResponse(response);
+    }
+    public static Response executeGet(String endpoint) {
+        response = buildBaseRequestSpecification()
+                .get(endpoint)
+                .then()
+                .extract().response();
+        printLogStart("GET", endpoint, "");
+        printLog("GET", response);
+        return response;
+    }
     public static Response executePost(String endpoint, Integer statusCode, LazyMap json) {
         response = buildBaseRequestSpecification()
                 .body(json)
@@ -73,16 +92,6 @@ public class RestSupport {
         printLogStart("POST",endpoint, json.toString());
         printLog("POST",response);
         return response;
-    }
-    public static void executeGet(String endpoint, Integer statusCode) {
-        response = buildBaseRequestSpecification()
-                .get(endpoint)
-                .then()
-                .statusCode(statusCode)
-                .extract().response();
-        printLogStart("GET",endpoint, "");
-        printLog("GET",response);
-        setResponse(response);
     }
     public static Response executePut(String endpoint, LazyMap json) {
         response = buildBaseRequestSpecification()
@@ -160,4 +169,5 @@ public class RestSupport {
         Hooks.scenario.write("Response: [ "+ response.getBody().asString() + " ]");
         Hooks.scenario.write("");
     }
+
 }

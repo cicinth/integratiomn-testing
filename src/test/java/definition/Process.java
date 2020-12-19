@@ -6,6 +6,7 @@ public class Process {
     private static final String PROCESS_URL = "http://agapito-server.herokuapp.com/processos";
     private static LazyMap fieldsJson = new LazyMap();
     private static String lastProcess;
+    private static String id;
 
     public static void addFields(String field, String value) {
         fieldsJson.put(field, value);
@@ -27,6 +28,11 @@ public class Process {
     public static void setLastProcess(String lastProcess) {
         Process.lastProcess = lastProcess;
     }
-
+    public static void setIdProcess(String idProcesso) {
+        id = idProcesso;
+    }
+    public static String getIdProcess() {
+        return id;
+    }
 
 }
