@@ -5,7 +5,7 @@ import org.junit.Assert;
 import support.RestSupport;
 
 public class GeneralProcessSteps {
-    @Então("^usuario deseja ver (.*) com valor \"([^\"]*)\"$")
+    @Então("^usuario podera ver (.*) com valor \"([^\"]*)\"$")
     public void usuarioDesejaVerConteudoComValor(String field, String value) throws Throwable {
         Assert.assertEquals(value, RestSupport.key(field));
     }
@@ -14,7 +14,7 @@ public class GeneralProcessSteps {
         LazyMap messageJson = new LazyMap();
         messageJson.put("Salvo com sucesso", 201);
         messageJson.put("Sucesso", 200);
-        messageJson.put("Sem conteudo", 204);
+        messageJson.put("Deletado com sucesso", 204);
         messageJson.put("Não encontrado", 404);
         messageJson.put("Não autorizado", 401);
         messageJson.put("Não processado", 422);

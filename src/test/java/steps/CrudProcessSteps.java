@@ -8,6 +8,7 @@ import definition.Process;
 import support.RestSupport;
 
 public class CrudProcessSteps {
+
     @Dado("^usuario gostaria de salvar um processo$")
     public void userGostariaDeSalvarUmProcesso() throws Throwable {
         Process.clearFields();
@@ -22,8 +23,8 @@ public class CrudProcessSteps {
         Process.setLastProcess(RestSupport.key("id").toString());
         Process.clearFields();
     }
-    @E("^usuario deseja ver as informacoes")
-    public void userDesejaVerAsInformacoes() throws Throwable {
+    @E("^usuario deseja ver as informacoes do processo")
+    public void usuarioDesejaVerAsInformacoesDoProcesso() throws Throwable {
         RestSupport.executeGet(Process.getEndpoint() + Process.getLastProcess() + ".json");
     }
     @E("^usuario clica outra vez no botao salvar")
@@ -34,12 +35,12 @@ public class CrudProcessSteps {
     public void userClicaNoBotaoDeletar() throws Throwable {
         RestSupport.executeDelete(Process.getEndpoint() + Process.getLastProcess() + ".json");
     }
-    @Dado("^usuario deseja ver as informacoes do processo especifico \"([^\"]*)\"$")
+    @Dado("^usuario quer ver as informacoes do processo especifico \"([^\"]*)\"$")
     public void userDesejaVerAsInformacoesDoProcessoEspecifico(String idProcesso) throws Throwable {
         Process.setIdProcess(idProcesso);
     }
 
-    @Quando("^usuario clicar no botao  exibir")
+    @Quando("^usuario clicar no botao exibir")
     public void UserClicarNoBoatoExibir() {
         RestSupport.executeGet(Process.getEndpoint() + Process.getIdProcess() );
     }

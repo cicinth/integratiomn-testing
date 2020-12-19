@@ -1,0 +1,22 @@
+[
+  {
+    "comments": [
+      {
+        "line": 1,
+        "value": "#language: pt"
+      }
+    ],
+    "line": 3,
+    "name": "Process CRUD",
+    "description": "Cenário Usuario gostaria de salvar um processo via POST\n  Dado usuario gostaria de salvar um processo\n  E usuario informa vara com valor igual \"São Paulo\"\n  E usuario informa numero_processo com valor igual \"30\"\n  E usuario informa natureza com valor igual \"Trabalhista\"\n  E usuario informa partes com valor igual \"Cinthia X Sheila\"\n  E usuario informa urgente com valor igual \"S \"\n  E usuario informa arbitramento com valor igual \"S\"\n  E usuario informa assistente_social com valor igual \"Queitilin\"\n  E usuario informa data_entrada com valor igual \"2020-12-19\"\n  E usuario informa data_saida com valor igual \"2021-04-05\"\n  E usuario informa data_agendamento com valor igual \"2021-01-20\"\n  E usuario informa status com valor igual \"Aguardando\"\n  E usuario informa observacao com valor igual \"Teste via POST \"\n  Quando usuario clica no botão salvar\n  Então usuario devera ver a mensagem de \"Salvo com sucesso\"",
+    "id": "process-crud",
+    "keyword": "Funcionalidade",
+    "uri": "process/crudProcess.feature",
+    "tags": [
+      {
+        "line": 2,
+        "name": "@RunTests"
+      }
+    ]
+  }
+]
